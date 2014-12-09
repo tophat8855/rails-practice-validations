@@ -2,6 +2,18 @@
   <h1>Edit <%= @organization.name_was %></h1>
 </div>
 
+<% if @organization.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@organization.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+  <ul>
+    <% @organization.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
 <%= form_for @organization, html: {class: "form-horizontal"} do |f| %>
   <div class="form-group">
     <%= f.label :name, class: "control-label col-sm-2" %>

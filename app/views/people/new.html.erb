@@ -2,6 +2,18 @@
   <h1>New Person</h1>
 </div>
 
+<% if @person.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@person.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+  <ul>
+    <% @person.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
 <%= form_for @person, html: {class: "form-horizontal"} do |f| %>
   <div class="form-group">
     <%= f.label :first_name, class: "control-label col-sm-2" %>
